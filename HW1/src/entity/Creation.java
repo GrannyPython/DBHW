@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.Random;
 import java.util.function.BiConsumer;
 
 abstract class Creation {

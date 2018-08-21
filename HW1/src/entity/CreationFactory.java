@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 
@@ -11,25 +9,25 @@ public class CreationFactory {
         return getRandomCreation();
     }
 
-    private static Creation createHobbit(){
+    private static Creation createHobbit() {
         Creation creation = new Hobbit();
         creation.attackStrategy = AttackStrategies.CRYING_STRATEGY;
         return creation;
     }
 
-    private static  Creation createElf(){
+    private static Creation createElf() {
         Creation creation = new Elf();
         creation.attackStrategy = AttackStrategies.VAMPIRE_STRATEGY;
         return creation;
     }
 
-    private static Creation createKing(){
+    private static Creation createKing() {
         Creation creation = new King();
         creation.attackStrategy = AttackStrategies.DRUNK_STRATEGY;
         return creation;
     }
 
-    private static Creation createKnight(){
+    private static Creation createKnight() {
         Creation creation = new Knight();
         creation.attackStrategy = AttackStrategies.DRUNK_STRATEGY;
         return creation;
@@ -44,23 +42,30 @@ public class CreationFactory {
         int randomValue = getRandomNumberInRange(0, 3);
         Creation creation = null;
 
-        if(randomValue == 0){creation = createHobbit(); }
-        if(randomValue == 1){creation = createElf(); }
-        if(randomValue == 2){creation = createKing(); }
-        if(randomValue == 3){creation = createKnight(); }
+        if (randomValue == 0) {
+            creation = createHobbit();
+        }
+        if (randomValue == 1) {
+            creation = createElf();
+        }
+        if (randomValue == 2) {
+            creation = createKing();
+        }
+        if (randomValue == 3) {
+            creation = createKnight();
+        }
 
         return creation;
     }
 
 
-
     private static class AttackStrategies {
 
-        static final BiConsumer<Creation, Creation> CRYING_STRATEGY = (current, enemy) -> {
+        private static final BiConsumer<Creation, Creation> CRYING_STRATEGY = (current, enemy) -> {
             System.out.println(current.getClass().getSimpleName() + " crying and do nothing");
         };
 
-        static final BiConsumer<Creation, Creation> VAMPIRE_STRATEGY = (current, enemy) -> {
+        private static final BiConsumer<Creation, Creation> VAMPIRE_STRATEGY = (current, enemy) -> {
             if (current.power > enemy.power) {
                 System.out.println(current.getClass().getSimpleName() + " zeroed hp of enemy");
                 enemy.hp = 0;
@@ -70,7 +75,7 @@ public class CreationFactory {
             }
         };
 
-        static final BiConsumer<Creation, Creation> DRUNK_STRATEGY = (current, enemy) -> {
+        private static final BiConsumer<Creation, Creation> DRUNK_STRATEGY = (current, enemy) -> {
             int damage = getRandomNumberInRange(0, current.power);
             enemy.hp -= damage;
             System.out.println(current.getClass().getSimpleName() + " damaged " + damage + " enemy has " + enemy.hp + " hp");
