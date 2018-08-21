@@ -6,31 +6,30 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class CreationFactory {
-    private static Random random = new Random();
 
-    public static Creation create() {
+    static Creation create() {
         return getRandomCreation();
     }
 
-    static private Creation createHobbit(){
+    private static Creation createHobbit(){
         Creation creation = new Hobbit();
         creation.attackStrategy = AttackStrategies.CRYING_STRATEGY;
         return creation;
     }
 
-    static private Creation createElf(){
+    private static  Creation createElf(){
         Creation creation = new Elf();
         creation.attackStrategy = AttackStrategies.VAMPIRE_STRATEGY;
         return creation;
     }
 
-    static private Creation createKing(){
+    private static Creation createKing(){
         Creation creation = new King();
         creation.attackStrategy = AttackStrategies.DRUNK_STRATEGY;
         return creation;
     }
 
-    static private Creation createKnight(){
+    private static Creation createKnight(){
         Creation creation = new Knight();
         creation.attackStrategy = AttackStrategies.DRUNK_STRATEGY;
         return creation;
@@ -42,7 +41,7 @@ public class CreationFactory {
     }
 
     private static Creation getRandomCreation() {
-        int randomValue = getRandomNumberInRange(0, 4);
+        int randomValue = getRandomNumberInRange(0, 3);
         Creation creation = null;
 
         if(randomValue == 0){creation = createHobbit(); }
@@ -56,6 +55,7 @@ public class CreationFactory {
 
 
     private static class AttackStrategies {
+
         static final BiConsumer<Creation, Creation> CRYING_STRATEGY = (current, enemy) -> {
             System.out.println(current.getClass().getSimpleName() + " crying and do nothing");
         };
