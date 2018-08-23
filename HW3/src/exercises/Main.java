@@ -20,9 +20,14 @@ public class Main {
     private static List<ExampleRequest> parseCustromerWish() {
         List<ExampleRequest> requestList = new ArrayList<>();
 
-        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("+").build());
-        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("-").build());
-        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("*").build());
+//        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("+").min(-10).max(10).build());
+//        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("-").min(-20).max(20).build());
+//        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("*").min(-30).max(30).build());
+
+        requestList.add(ExampleRequest.builder().amountOfExamples(1).operator("*")
+                .addRuleFirstTerm(NumRule.NEVEN).addRuleFirstTerm(NumRule.LESS_THAN_ZERO)
+                .addRuleSecondTerm(NumRule.EVEN).addRuleSecondTerm(NumRule.LESS_THAN_ZERO)
+                .min(-100).max(100).build());
 
         return requestList;
     }
