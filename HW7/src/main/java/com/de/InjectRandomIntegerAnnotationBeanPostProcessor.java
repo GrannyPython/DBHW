@@ -1,4 +1,4 @@
-package springexample.src.main.java.com.de;
+package com.de;
 
 import lombok.SneakyThrows;
 import org.fluttercode.datafactory.impl.DataFactory;

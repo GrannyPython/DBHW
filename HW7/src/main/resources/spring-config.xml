@@ -11,7 +11,7 @@
         <constructor-arg value="trustMe"/>
     </bean>
 
-    <bean id="beanPostProcessor" class="com.de.InjectRandomIntegerAnnotationBeanPostProcessor"/>
+    <bean class="com.de.InjectRandomIntegerAnnotationBeanPostProcessor"/>
 
     <bean id="quoterTerminator" class="com.de.QuoterTerminator" scope="prototype">
         <property name="quotes">
@@ -24,7 +24,7 @@
         </property>
     </bean>
 
-    <bean id="talkingRobot" class="com.de.TalkingRobotImpl" init-method="talk">
+    <bean id="talkingRobot" class="com.de.TalkingRobotImpl">
         <property name="quoters">
             <list>
                 <ref bean="quoterSchek"/>

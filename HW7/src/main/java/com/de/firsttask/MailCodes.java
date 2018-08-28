@@ -1,10 +1,10 @@
-package springexample.src.main.java.com.de;
+package com.de.firsttask;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 @Retention(RetentionPolicy.RUNTIME)
-public @interface InjectRandomInt {
-    int min();
-    int max();
+@interface MailCodes {
+    MailCode[] value();
 }
