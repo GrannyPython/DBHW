@@ -1,6 +1,5 @@
 package com.de.thirdtask;
 
-@Benchmark
-@Transaction
-public class Unit {
+public interface Unit {
+    void doSmth();
 }
