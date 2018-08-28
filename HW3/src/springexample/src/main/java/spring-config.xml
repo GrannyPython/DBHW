@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="quoterSchek" class="com.de.QuoterSchek" scope="prototype">
+        <property name="quote" value="2B or !2B"/>
+    </bean>
+
+    <bean id="trustmeString" class="java.lang.String">
+        <constructor-arg value="trustMe"/>
+    </bean>
+
+    <bean id="beanPostProcessor" class="com.de.InjectRandomIntegerAnnotationBeanPostProcessor"/>
+
+    <bean id="quoterTerminator" class="com.de.QuoterTerminator" scope="prototype">
+        <property name="quotes">
+            <list>
+                <value>I'll be back</value>
+                <value>Luk, I am ur father</value>
+                <value>Astra la Vista baby</value>
+                <ref bean="trustmeString"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="talkingRobot" class="com.de.TalkingRobotImpl" init-method="talk">
+        <property name="quoters">
+            <list>
+                <ref bean="quoterSchek"/>
+                <ref bean="quoterTerminator"/>
+            </list>
+        </property>
+    </bean>
+</beans>
