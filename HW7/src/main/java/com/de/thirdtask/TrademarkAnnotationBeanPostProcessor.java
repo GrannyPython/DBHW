@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.stream.Stream;
 
-public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
+public class TrademarkAnnotationBeanPostProcessor implements BeanPostProcessor {
     @Override
     @SneakyThrows
     public Object postProcessAfterInitialization(Object t, String beanName) throws BeansException {
@@ -27,8 +27,8 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
 
 
 
-        boolean methodNeedsBenchmark = Stream.of(type.getDeclaredMethods()).anyMatch(method -> method.isAnnotationPresent(Benchmark.class));
-        if (type.isAnnotationPresent(Benchmark.class)||methodNeedsBenchmark) {
+        boolean methodNeedsBenchmark = Stream.of(type.getDeclaredMethods()).anyMatch(method -> method.isAnnotationPresent(Trademark.class));
+        if (type.isAnnotationPresent(Trademark.class)||methodNeedsBenchmark) {
             if (type.getInterfaces().length == 0) {
                 return Enhancer.create(type, (org.springframework.cglib.proxy.InvocationHandler) (o, method, args) -> invoke(t, typeEfFinal, method, args));
             }
@@ -44,10 +44,10 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private Object invoke(Object t, Class type, Method method, Object[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method classMethod = type.getMethod(method.getName(), method.getParameterTypes());
-        if (classMethod.isAnnotationPresent(Benchmark.class) || type.isAnnotationPresent(Benchmark.class)) {
-            System.out.println("********** Benchmark for method " + method.getName() + " was started ***********");
+        if (classMethod.isAnnotationPresent(Trademark.class) || type.isAnnotationPresent(Trademark.class)) {
+            System.out.println("********** Trademark for method " + method.getName() + " was started ***********");
             Object retVal = method.invoke(t, args);
-            System.out.println("********** Benchmark for method " + method.getName() + " was ended ***********");
+            System.out.println("********** Trademark for method " + method.getName() + " was ended ***********");
             return retVal;
         } else {
             return method.invoke(t, args);
