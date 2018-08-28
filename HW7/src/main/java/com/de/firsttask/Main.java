@@ -7,6 +7,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-        new FileSystemXmlApplicationContext("C:\\Users\\GP\\IdeaProjects\\DBHWAnd\\HW7\\src\\main\\resources\\spring-config-homework.xml");
+        new FileSystemXmlApplicationContext("C:\\Users\\GP\\IdeaProjects\\DBHWAnd\\HW7\\src\\main\\resources\\spring-config-homework-first.xml");
     }
 }
