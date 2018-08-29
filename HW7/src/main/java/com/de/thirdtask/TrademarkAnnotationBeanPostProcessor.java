@@ -19,8 +19,7 @@ public class TrademarkAnnotationBeanPostProcessor implements BeanPostProcessor {
         Class type;
         if(typeEfFinal.toString().contains("Proxy")){
             String className = (t.toString().split("@"))[0];
-            Class<?> aClass = Class.forName(className);
-            type = aClass;
+            type = Class.forName(className);
         }else {
             type = typeEfFinal;
         }
@@ -33,8 +32,7 @@ public class TrademarkAnnotationBeanPostProcessor implements BeanPostProcessor {
                 return Enhancer.create(type, (org.springframework.cglib.proxy.InvocationHandler) (o, method, args) -> invoke(t, typeEfFinal, method, args));
             }
             else {
-                Object o = Proxy.newProxyInstance(type.getClassLoader(), type.getInterfaces(), (proxy, method, args) -> invoke(t, type, method, args));
-                return o;
+                return Proxy.newProxyInstance(type.getClassLoader(), type.getInterfaces(), (proxy, method, args) -> invoke(t, type, method, args));
             }
 
         }

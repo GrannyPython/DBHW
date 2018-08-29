@@ -13,6 +13,7 @@ public class MailCodeAnnotationBeanPostProcessor implements BeanPostProcessor {
     {
         mailCodesMap.put(1, new WelcomeMailSender());
         mailCodesMap.put(2, new BirthdayMailSender());
+        mailCodesMap.put(3, new OloMailSender());
     }
 
 

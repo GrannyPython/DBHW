@@ -8,7 +8,11 @@ import java.lang.reflect.Field;
 import java.util.LinkedList;
 
 public class InjectSellerAnnotationBeanPostProcessor implements BeanPostProcessor {
-    private LinkedList<Seller> sellers = (LinkedList<Seller>) Database.findAllSellersFromBestToWorse();
+    private LinkedList<Seller> sellers;
+
+    private InjectSellerAnnotationBeanPostProcessor() {
+        this.sellers = (LinkedList<Seller>) Database.findAllSellersFromBestToWorse();
+    }
 
     @SneakyThrows
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
